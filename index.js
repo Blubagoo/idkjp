@@ -1,8 +1,13 @@
 //user selects to search by artist and title or just to search for a particular artist
 //listen for selection
 function displayCorrectForm(){
-	$('#form-area').on('click', 'artist-form-btn', function(e) {
-
+	$('#form-area').on('click', '#artist-form-btn', function(e) {
+		$('#form').remove();
+		$('#form-area').html(renderArtistForm);
+	});
+	$('#form-area').on('click', '#artist-title-form-btn', function(e) {
+		$('#form').remove();
+		$('#form-area').html(renderArtistTitleForm);
 	});
 }
 function renderArtistForm() {
