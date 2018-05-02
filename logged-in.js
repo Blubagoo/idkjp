@@ -1,29 +1,7 @@
-//user selects to search by artist and title or just to search for a particular artist
-//listen for selection
-function displayCorrectForm(){
-	$('#form-area').on('click', '#artist-form-btn', function(e) {
-		$('#form').remove();
-		$('#form-area').html(renderArtistForm);
-	});
-	$('#form-area').on('click', '#artist-title-form-btn', function(e) {
-		$('#form').remove();
-		$('#form-area').html(renderArtistTitleForm);
-	});
-}
-function renderArtistForm() {
- return `
- 	<div id="artis-form">
-		<form role="form">
-			<a id="artist-form-btn">Artist</a><a id="artist-title-form-btn">Artist + Title</a><br>
-			<input type="text" name="search-box" required>
-			<button type="submit" id="search-btn">Listen In</button>
-			<button type="button" id="back-btn">Back</button>
-		</form>
-	</div>`
-}
-function renderArtistTitleForm() {
+let url = window.location.href;
+let access_token = url.match(/\#(?:access_token)\=([\S\s]*?)\&/)[1];
+console.log(access_token);
 
-}
 //listen for submit
 function listenForSubmit() {
 
