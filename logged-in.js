@@ -127,6 +127,7 @@ function highlightRestart() {
 //run callbacks
 function loadCallbacks() {
 	listenForSubmit();
+	getToken();
 	
 };
 
