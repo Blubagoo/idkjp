@@ -8,18 +8,20 @@ function getToken() {
 	listenForSubmit(token);
 }
 
+
+
 //listen for submit
 function listenForSubmit(token) {
 	$('#container').submit('#search-btn', function(e) {
 		e.preventDefault();
 		let artist = $('#search-box').val();
 		$('#search-box').val('');
+		console.log('artist');
 		artistSearchAPI(artist,token);
-
-
 	});
-	//take value from form
 }
+
+
 //send to spotify
 function artistSearchAPI(artist, token) {
 	const settings = {
@@ -27,7 +29,7 @@ function artistSearchAPI(artist, token) {
 		headers: {
 			Accept: "application/json",
 			"Content-type" : "application/json",
-			Authorization: `Bearer ${token}`
+			Authorization: `"Bearer ${token}"`
 		},
 		data: {
 			q: artist,
