@@ -38,6 +38,7 @@ function artistSearchAPI(artist, token) {
 		method: 'GET',
 		success: function(response) {
 			console.log(response);
+			displayResults(data);
 		},
 		error: function() {
 			console.log(arguments);
@@ -47,12 +48,14 @@ function artistSearchAPI(artist, token) {
 }
 
 //render results
-function renderResults() {
-
+function renderResults(img, alt, title, ) { //fix jquery tags
+return `
+	<div id="artist-results">
+		<img src="${img}" class="images" alt="${alt}">
+		<p align="center" class="title"> ${title}</p>`;
 }
 //display results
-function displayResults() {
-
+function displayResults(data) {
 }
 //user picks correct artist
 function listenForArtist() {
