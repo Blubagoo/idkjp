@@ -96,6 +96,7 @@ function getEvents() {
 		method:"GET",
 		success: function () {
 			console.log("success", data);
+			renderEvents(data);
 		},
 		error: function() {
 			console.log(arguments);
