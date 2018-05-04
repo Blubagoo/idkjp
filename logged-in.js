@@ -87,10 +87,11 @@ function getLyrics(artist, title) {
 //send to ticketmaster
 function getEvents() {
 	const settings = {
-		url:
+		url: "https://app.ticketmaster.com/discovery/v2/attractions",
 		data: {
-
+			keyword: "jack johnson"
 		},
+		async: true,
 		dataType: "JSON",
 		method:"GET",
 		success: function () {
@@ -99,7 +100,8 @@ function getEvents() {
 		error: function() {
 			console.log(arguments);
 		}
-	}
+	};
+	$.ajax(settings)
 }
 
 //fill lyrics 
