@@ -17,19 +17,19 @@ function listenForSubmit(token) {
 		let artist = $('#search-box').val();
 		$('#search-box').val('');
 		console.log(artist);
-		artistSearchAPI(artist,token);
+		artistSearchAPI(artist,token, displayResults);
 	});
 }
 
 
 //send to spotify
-function artistSearchAPI(artist, token) {
+function artistSearchAPI(artist, token, callback) {
 	const settings = {
 		url: 'https://api.spotify.com/v1/search',
 		headers: {
 			Accept: "application/json",
 			"Content-type" : "application/json",
-			Authorization: "Bearer BQCMX18K_SYwYxhnDEUH3nJMPzBshT5zGbEtUIBL-QENCPGOnWTcnckMfeqhCE43oeiYMO2fZR9qZERb2FZH9lcrNvwrcaajMmltn4mk_1tA64de3SfeEb7JuUoGuGVEashDmSCj_XzGPI1PFkdtldbkIMTC"
+			Authorization: "Bearer " + token
 
 		},
 		data: {
@@ -39,10 +39,7 @@ function artistSearchAPI(artist, token) {
 		},
 		dataType: 'json',
 		method: 'GET',
-		success: function(data) {
-			console.log(data);
-			displayResults(data);
-		},
+		success: callback,
 		error: function() {
 			console.log(arguments);
 		}
@@ -55,12 +52,11 @@ function renderResults(item) { //fix jquery tags
 return `
 	<div id="artist-results">
 		<img src="${item.artist.items.images[0].url}" class="images" alt="${item.artist.items.name}">
-		<p align="center" class="title"> ${title}</p>`;
+		<p align="center" class="title"> ${item.artist.items.name}</p>`;
 }
 //display results
-function displayResults(data) {
-	let results = data.artist.map((item, index) => renderResults(item));
-	$()
+function displayResults(artist) {
+	const results = artist.items.map((item, index) => renderResults(item));
 }
 //user picks correct artist
 function listenForArtist() {
