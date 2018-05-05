@@ -48,11 +48,13 @@ function renderResults(item) { //fix jquery tags
 return `
 	<div id="artist-results">
 		<img src="${item.artist.items.images[0].url}" class="images" alt="${item.artist.items.name}">
-		<p align="center" class="title"> ${item.artist.items.name}</p>`;
+		<p align="center" class="title"> ${item.artist.items.name}</p>
+	</div>`;
 }
 //display results
-function displayResults(artist) {
-	const results = artist.items.map((item, index) => renderResults(item));
+function displayResults(artists) {
+	const spotify = artists;
+	const result = spotify.artists.map((item, index) => renderResults(item));
 }
 //user picks correct artist
 function listenForArtist() {
