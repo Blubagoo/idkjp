@@ -29,7 +29,8 @@ function artistSearchAPI(artist, token) {
 		headers: {
 			Accept: "application/json",
 			"Content-type" : "application/json",
-			Authorization: 'Bearer ' + token
+			Authorization: "Bearer BQCMX18K_SYwYxhnDEUH3nJMPzBshT5zGbEtUIBL-QENCPGOnWTcnckMfeqhCE43oeiYMO2fZR9qZERb2FZH9lcrNvwrcaajMmltn4mk_1tA64de3SfeEb7JuUoGuGVEashDmSCj_XzGPI1PFkdtldbkIMTC"
+
 		},
 		data: {
 			q: artist,
@@ -38,8 +39,8 @@ function artistSearchAPI(artist, token) {
 		},
 		dataType: 'json',
 		method: 'GET',
-		success: function(response) {
-			console.log(response);
+		success: function(data) {
+			console.log(data);
 			displayResults(data);
 		},
 		error: function() {
@@ -50,16 +51,16 @@ function artistSearchAPI(artist, token) {
 }
 
 //render results
-function renderResults(img, alt, title, ) { //fix jquery tags
+function renderResults(item) { //fix jquery tags
 return `
 	<div id="artist-results">
-		<img src="${img}" class="images" alt="${alt}">
+		<img src="${item.artist.items.images[0].url}" class="images" alt="${item.artist.items.name}">
 		<p align="center" class="title"> ${title}</p>`;
 }
 //display results
 function displayResults(data) {
-	let result = data.artist.items.map();
-	let id = result.id()
+	let results = data.artist.map((item, index) => renderResults(item));
+	$()
 }
 //user picks correct artist
 function listenForArtist() {
@@ -137,8 +138,6 @@ function highlightRestart() {
 //run callbacks
 function loadCallbacks() {
 	listenForSubmit();
-	getToken();
-	
 };
 
 $(loadCallbacks);
