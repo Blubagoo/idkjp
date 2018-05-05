@@ -16,7 +16,7 @@ function listenForSubmit(token) {
 		e.preventDefault();
 		let artist = $('#search-box').val();
 		$('#search-box').val('');
-		console.log('artist');
+		console.log(artist);
 		artistSearchAPI(artist,token);
 	});
 }
@@ -29,7 +29,7 @@ function artistSearchAPI(artist, token) {
 		headers: {
 			Accept: "application/json",
 			"Content-type" : "application/json",
-			Authorization: `"Bearer ${token}"`
+			Authorization: 'Bearer ' + token
 		},
 		data: {
 			q: artist,
@@ -58,6 +58,8 @@ return `
 }
 //display results
 function displayResults(data) {
+	let result = data.artist.items.map();
+	let id = result.id()
 }
 //user picks correct artist
 function listenForArtist() {
@@ -90,11 +92,14 @@ function getLyrics(artist, title) {
 	$.ajax(settings);
 }
 //send to ticketmaster
-function getEvents() {
+function getEvents(artist) {
 	const settings = {
 		url: "https://app.ticketmaster.com/discovery/v2/attractions",
+		headers: {
+			apikey: "foT0mqx1A21ZxgjogM48Svp5vNF7gbgy"
+		},
 		data: {
-			keyword: "jack johnson"
+			keyword: artist
 		},
 		async: true,
 		dataType: "JSON",
