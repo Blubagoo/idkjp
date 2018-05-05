@@ -1,5 +1,4 @@
 
-
 	let url = window.location.href;
 	let access_token = url.split('=');
 	let token_type = access_token[1].split('&');
@@ -26,8 +25,6 @@ function artistSearchAPI(artist, token, callback) {
 	const settings = {
 		url: 'https://api.spotify.com/v1/search',
 		headers: {
-			Accept: "application/json",
-			"Content-type" : "application/json",
 			Authorization: "Bearer " + token
 
 		},
@@ -133,7 +130,6 @@ function highlightRestart() {
 //run callbacks
 function loadCallbacks() {
 	listenForSubmit(token);
-	getToken();
-};
+}
 
 $(loadCallbacks);
