@@ -1,12 +1,11 @@
 
-function getToken() {
+
 	let url = window.location.href;
 	let access_token = url.split('=');
 	let token_type = access_token[1].split('&');
 	let token = token_type[0];
 	console.log(token);
-	listenForSubmit(token);
-}
+	
 
 
 
@@ -133,7 +132,7 @@ function highlightRestart() {
 }
 //run callbacks
 function loadCallbacks() {
-	listenForSubmit();
+	listenForSubmit(token);
 	getToken();
 };
 
