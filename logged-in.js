@@ -50,14 +50,14 @@ function artistSearchAPI(artist, token) {
 function renderResults(item) { //fix jquery tags
 return `
 	<div id="artist-results">
-		<img src="${item.images[0].url}" class="images" alt="${item.name}">
+		<img src="${item.images.url}" class="images" alt="${item.name}">
 		<p align="center" class="title"> ${item.name}</p>
 	</div>`;
 }
 //display results
-function displayResults(data) {
-	const spotify = data;
-	const result = spotify.artists.artists.items.map((item, index) => renderResults(item));
+function displayResults(artists) {
+	const result = artists.items.map((item, index) => renderResults(item));
+	console.log(result)
 }
 //user picks correct artist
 function listenForArtist() {
