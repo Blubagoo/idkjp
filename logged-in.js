@@ -37,6 +37,7 @@ function artistSearchAPI(artist, token) {
 		method: 'GET',
 		success: function(data) {
 			console.log('success' + data);
+			displayResults(data);
 
 		},
 		error: function() {
