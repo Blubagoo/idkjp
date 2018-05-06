@@ -8,6 +8,7 @@
 	var $artists = $('#container');
 
 
+
 //listen for submit
 function listenForSubmit(token) {
 	$('#container').submit('#search-btn', function(e) {
@@ -46,22 +47,59 @@ function artistSearchAPI(artist, token) {
 	$.ajax(settings);
 }
 
+function getAlbumFromSpotify(id) {
+	const settings = {
+		url:`"https://api.spotify.com/v1/artists/${id}/albums"`,
+		headers:{
+			Authorization: "Bearer " + token
+		},
+		dataType: "json",
+		success: function(data) {
+			console.log('success', data);
+
+		}
+		error:
+	}
+}
+
 //render results
 function renderResults(item) { //fix jquery tags
-return `
-	<div id="artist-results"><img src="${item.images[0].url}" class="images" alt="${item.name}"><p align="center" class="title"> ${item.name}</p></div>`;
+	const id = `${item.id}`;
+	return `
+	<div id="artist-results">
+	<img src="${item.images[0].url}" class="images" alt="${item.name}">
+	<p align="center" class="title">${item.name}</p>
+	</div>`;
+	console.log(id);
+	listenForArtist();
 }
+
+
+
+
+
+
 //display results
 function displayResults(artists) {
-	const result = artists.artists.items.map((item, index) => renderResults(item));
-	$('#form-area').html(result);
+	const result = artists.artists.items.map((item, index) => 
+		renderResults(item);
+		$('#form-area').html(result);
+		);
+	
 	console.log(result);
 }
+
+
 //user picks correct artist
 function listenForArtist() {
-
+	$('#container').on('click', '.images', () => 
+		getAlbumFromSpotify();  
+	);
 }
 function renderAblum() {
+
+}
+function displayAlbums(data) {
 
 }
 //user picks album 
