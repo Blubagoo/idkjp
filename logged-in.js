@@ -35,9 +35,9 @@ function artistSearchAPI(artist, token) {
 		},
 		dataType: 'json',
 		method: 'GET',
-		success: function(artists) {
-			console.log('success', artists);
-			displayResults(artists);
+		success: function(data) {
+			console.log('success', data);
+			displayResults(data);
 		},
 		error: function() {
 			console.log(arguments);
