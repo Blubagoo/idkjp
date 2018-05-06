@@ -5,7 +5,7 @@
 	let token = token_type[0];
 	console.log(token);
 	
-
+	var $artists = $('#container');
 
 
 //listen for submit
@@ -35,9 +35,15 @@ function artistSearchAPI(artist, token) {
 		},
 		dataType: 'json',
 		method: 'GET',
-		success: function(data) {
-			console.log('success' + data);
-			displayResults(data);
+		success: function(artists) {
+			console.log('success', data);
+			$.each (data, function(i, artist) {
+				$artists.append(
+					`'<div id="artist-results">
+					  <img src="${item.artist.items.images[0].url}" class="images" alt="${artist.artists.items.name}">
+					  <p align="center" class="title"> ${artist.artists.items.name}</p>
+					  </div>'`)
+			});
 
 		},
 		error: function() {
@@ -56,8 +62,8 @@ return `
 	</div>`;
 }
 //display results
-function displayResults(artists) {
-	const spotify = artists;
+function displayResults(data) {
+	const spotify = data;
 	const result = spotify.artists.map((item, index) => renderResults(item));
 }
 //user picks correct artist
