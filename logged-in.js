@@ -40,8 +40,8 @@ function artistSearchAPI(artist, token) {
 			$.each (artists, function(i, artist) {
 				$artists.append(
 					`'<div id="artist-results">
-					  <img src="${artist.artists.items.images[0].url}" class="images" alt="${artist.artists.items.name}">
-					  <p align="center" class="title"> ${artist.artists.items.name}</p>
+					  <img src="${artist.artists.artists.items.images[0].url}" class="images" alt="${artist.artists.artists.items.name}">
+					  <p align="center" class="title"> ${artist.artists.artists.items.name}</p>
 					  </div>'`)
 			});
 
