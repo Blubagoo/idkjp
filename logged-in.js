@@ -57,9 +57,12 @@ function getAlbumFromSpotify(id) {
 		success: function(data) {
 			console.log('success', data);
 
-		}
-		error:
+		},
+		error:function () {
+			console.log(arguments);
+		},
 	}
+	$.ajax(settings);
 }
 
 //render results
