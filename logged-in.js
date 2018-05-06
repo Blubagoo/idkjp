@@ -49,10 +49,7 @@ function artistSearchAPI(artist, token) {
 //render results
 function renderResults(item) { //fix jquery tags
 return `
-	<div id="artist-results">
-		<img src="${item.images[0].url}" class="images" alt="${item.name}">
-		<p align="center" class="title"> ${item.name}</p>
-	</div>`;
+	<div id="artist-results"><img src="${item.images[0].url}" class="images" alt="${item.name}"><p align="center" class="title"> ${item.name}</p></div>`;
 }
 //display results
 function displayResults(artists) {
