@@ -37,14 +37,6 @@ function artistSearchAPI(artist, token) {
 		method: 'GET',
 		success: function(artists) {
 			console.log('success', artists);
-			$.each (artists, function(i, artist) {
-				$artists.append(
-					`'<div id="artist-results">
-					  <img src="${artist.items.images.0.url}" class="images" alt="${artist.items.0.name}">
-					  <p align="center" class="title"> ${artist.items.0.name}</p>
-					  </div>'`)
-			});
-
 		},
 		error: function() {
 			console.log(arguments);
