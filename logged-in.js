@@ -56,8 +56,9 @@ return `
 }
 //display results
 function displayResults(artists) {
-	const result = artists.artists.items.map((item, index) => renderResults(item));
-	console.log(result)
+	const result = artists.artists.items.map((item, index) => renderResults(item);
+		$('#container').html(result););
+	console.log(result);
 }
 //user picks correct artist
 function listenForArtist() {
