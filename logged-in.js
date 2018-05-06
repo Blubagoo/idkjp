@@ -15,13 +15,13 @@ function listenForSubmit(token) {
 		let artist = $('#search-box').val();
 		$('#search-box').val('');
 		console.log(artist);
-		artistSearchAPI(artist,token, displayResults);
+		artistSearchAPI(artist,token);
 	});
 }
 
 
 //send to spotify
-function artistSearchAPI(artist, token, callback) {
+function artistSearchAPI(artist, token) {
 	const settings = {
 		url: 'https://api.spotify.com/v1/search',
 		headers: {
@@ -35,7 +35,10 @@ function artistSearchAPI(artist, token, callback) {
 		},
 		dataType: 'json',
 		method: 'GET',
-		success: callback,
+		success: function(data) {
+			console.log('success' + data);
+
+		}
 		error: function() {
 			console.log(arguments);
 		}
