@@ -56,7 +56,7 @@ return `
 }
 //display results
 function displayResults(artists) {
-	const result = artists.items.map((item, index) => renderResults(item));
+	const result = artists.artists.items.map((item, index) => renderResults(item));
 	console.log(result)
 }
 //user picks correct artist
