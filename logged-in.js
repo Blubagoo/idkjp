@@ -80,8 +80,8 @@ function displayResults(artists) {
 	const result = artists.artists.items.map((item, index) => getId(item));
 	const selection = artists.artists.items[0]
 	getId(selection);
-	console.log(result);
-	console.log(selection);
+	console.log('result data', result);
+	console.log('selection data', selection);
 }
 
 function renderAblum() {
