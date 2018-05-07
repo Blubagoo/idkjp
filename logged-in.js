@@ -82,13 +82,6 @@ function displayResults(artists) {
 	console.log(result);
 }
 
-
-//user picks correct artist
-function listenForArtist() {
-	$('#container').on('click', '.images', () => 
-		getAlbumFromSpotify();  
-	);
-}
 function renderAblum() {
 
 }
