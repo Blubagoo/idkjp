@@ -5,7 +5,6 @@
 	let token = token_type[0];
 	console.log(token);
 	
-	var $artists = $('#container');
 
 
 
@@ -66,15 +65,9 @@ function getAlbumFromSpotify(id) {
 }
 
 //render results
-function renderResults(item) { //fix jquery tags
+function getId(item) { //fix jquery tags
 	const id = `${item.id}`;
-	return `
-	<div id="artist-results">
-	<img src="${item.images[0].url}" class="images" alt="${item.name}">
-	<p align="center" class="title">${item.name}</p>
-	</div>`;
-	console.log(id);
-	listenForArtist();
+	getAlbumFromSpotify(id);
 }
 
 
@@ -84,10 +77,7 @@ function renderResults(item) { //fix jquery tags
 
 //display results
 function displayResults(artists) {
-	const result = artists.artists.items.map((item, index) => 
-		renderResults(item);
-		$('#form-area').html(result);
-		);
+	const result = artists.artists.items.map((item, index) => getId(item));
 	
 	console.log(result);
 }
