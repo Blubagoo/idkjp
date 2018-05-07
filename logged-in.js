@@ -55,6 +55,7 @@ function getAlbumFromSpotify(id) {
 		dataType: "json",
 		success: function(data) {
 			console.log('success', data);
+			displayAlbums(data);
 
 		},
 		error:function () {
@@ -77,17 +78,22 @@ function getId(item) { //fix jquery tags
 
 //display results
 function displayResults(artists) {
-	const result = artists.artists.items.map((item, index) => getId(item));
 	const selection = artists.artists.items[0]
 	getId(selection);
-	console.log('result data', result);
 	console.log('selection data', selection);
 }
 
-function renderAblum() {
+function renderAblum(item) {
+	return `
+	<div class="thumb-albums">
+	<img src="${item.images[2].url}" alt="${item.name}" class="images">
+	<p class="thumb-info">${item.name}</p>
+	</div>`
 
 }
 function displayAlbums(data) {
+	const album = data.items.map((item, index) => renderAblum(item));
+	$('#form-area').html(album);
 
 }
 //user picks album 
