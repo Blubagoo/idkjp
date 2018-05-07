@@ -77,8 +77,7 @@ function getId(item) { //fix jquery tags
 
 //display results
 function displayResults(artists) {
-	const result = artists.artists.items.map((item, index) => 
-		getId(item););
+	const result = artists.artists.items.map((item, index) => getId(item));
 	
 	console.log(result);
 }
