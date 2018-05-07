@@ -48,7 +48,7 @@ function artistSearchAPI(artist, token) {
 
 function getAlbumFromSpotify(id) {
 	const settings = {
-		url:`https://api.spotify.com/v1/artists/${id}/albums`,
+		url:'https://api.spotify.com/v1/artists/' + id + '/albums',
 		headers:{
 			Authorization: "Bearer " + token
 		},
